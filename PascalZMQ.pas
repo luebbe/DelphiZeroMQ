@@ -366,7 +366,7 @@ type
 
       Parameters:
         AValue: the value to push. }
-    procedure PushProtocolBuffer<T: record>(const AValue: T); overload;
+    procedure PushProtocolBuffer<T{$IF (RTLVersion < 36)}: record{$ENDIF}>(const AValue: T); overload;
     procedure PushProtocolBuffer(const ARecordType: Pointer; const AValue); overload;
   public
     { Popping frames }
@@ -2181,4 +2181,4 @@ initialization
 finalization
   ZMQFinalizeDebugMode;
 
-end.
+end.
